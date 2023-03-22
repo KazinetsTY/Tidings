@@ -1,3 +1,5 @@
 from django.contrib import admin
+from news.models import News, Section
 
-# Register your models here.
+admin.site.register(News)
+admin.site.register(Section)

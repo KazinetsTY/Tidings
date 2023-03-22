@@ -25,8 +25,8 @@
                 {% for news in tidings %}
                     <tr>
                         <td>{{ news.id }}</td>
-                        <td>{{ news.topic }}</td>
-                        <td>{{ news.header }}</td>
+                        <td>{{ news.section }}</td>
+                        <td>{{ news }}</td>
                         <td>{{ news.created_at|date:"d.m.Y H:i:s" }}</td>
                     </tr>
                 {% endfor %}
