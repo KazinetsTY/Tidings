@@ -1,41 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Новости</title>
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-primary">
-        <!-- Navbar content -->
-    </nav>
+{% extends "base.html" %}
+{% block title %} Новости {% endblock %}
 
-    <div class="container">
-        <h1>The NEWS</h1>
-        <table class="table table-striped">
-            <thead>
+{% block content %}
+<nav class="navbar navbar-dark bg-primary">
+    <!-- Navbar content -->
+</nav>
+
+<div class="container">
+    <h1>Новости</h1>
+    <a href="{% url "news:create" %}">Добавить статью</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Раздел</th>
+              <th scope="col">Статья</th>
+              <th scope="col">Создано</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+        <tbody>
+            {% for news in tidings %}
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Раздел</th>
-                  <th scope="col">Статья</th>
-                  <th scope="col">Создано</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-            <tbody>
-                {% for news in tidings %}
-                    <tr>
-                        <td>{{ news.id }}</td>
-                        <td>{{ news.section }}</td>
-                        <td>{{ news }}</td>
-                        <td>{{ news.created_at|date:"d.m.Y H:i:s" }}</td>
-                        <td><a href="{{ news.get_absolute_url }}">Подробнее</a></td>
+                    <td>{{ news.id }}</td>
+                    <td>{{ news.section }}</td>
+                    <td>{{ news }}</td>
+                    <td>{{ news.created_at|date:"d.m.Y H:i:s" }}</td>
+                    <td><a href="{{ news.get_absolute_url }}">Подробнее</a></td>
 
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+{% endblock content %}

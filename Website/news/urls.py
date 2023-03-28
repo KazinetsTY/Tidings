@@ -1,6 +1,9 @@
 from django.urls import path
-from news.views import index
+from news import views
+
+app_name = "news"
 
 urlpatterns = [
-    path("", index)
+    path("", views.index, name="list"),
+    path("create/", views.news_create, name="create")
 ]
