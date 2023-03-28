@@ -19,6 +19,7 @@
                   <th scope="col">Раздел</th>
                   <th scope="col">Статья</th>
                   <th scope="col">Создано</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
             <tbody>
@@ -28,6 +29,8 @@
                         <td>{{ news.section }}</td>
                         <td>{{ news }}</td>
                         <td>{{ news.created_at|date:"d.m.Y H:i:s" }}</td>
+                        <td><a href="{{ news.get_absolute_url }}">Подробнее</a></td>
+
                     </tr>
                 {% endfor %}
             </tbody>
