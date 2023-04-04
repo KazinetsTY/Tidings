@@ -1,0 +1,36 @@
+body {
+    background-color: darkgray;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: #ffffff;
+    border-right: 1px solid #dfe7ef;
+    min-height: 100vh;
+}
+
+.logo {
+    display: flex;
+    height: 60px;
+    padding: 0 32px;
+    align-items: center;
+}
+
+.logo img {
+    height: 30px;
+}
+
+.menu {
+    padding: 16px;
+    text-decoration: none;
+    color: #616161
+}
+
+.menu__link {
+    display: flex;
+    padding: 16px;
+}

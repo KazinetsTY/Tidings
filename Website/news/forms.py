@@ -1,7 +1,9 @@
 from django import forms
+from news import models
 
 
-class NewsForm(forms.Form):
-    section = forms.CharField(label="Раздел")
-    header = forms.CharField(label="Заголовок статьи", required=False)
-    article = forms.CharField(label="Текст статьи", required=False)
+class NewsForm(forms.ModelForm):
+    class Meta:
+        model = models.News
+        fields = '__all__'
+

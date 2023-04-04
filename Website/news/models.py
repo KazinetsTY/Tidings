@@ -29,13 +29,13 @@ class News(models.Model):
         return self.header
 
     def get_absolute_url(self):
-        return f"/news/{self.section}/{self.pk}"
+        return f"/news/{self.section}/{self.pk}/"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.header.exists():
             self.is_draft = True
-            super().save(force_update=True)
+            super().save(force_update=True, *args, **kwargs)
 
     def delete(self, *args, **kwargs):
         DeletedNews.objects.create(
