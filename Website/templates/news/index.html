@@ -1,37 +1,37 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
 {% block title %} Новости {% endblock %}
-
+{% block sidebar %}
+    {% include 'sidebar.html' with app_name='news' %}
+{% endblock %}
 {% block content %}
-<nav class="navbar navbar-dark bg-primary">
-    <!-- Navbar content -->
-</nav>
 
-<div class="container">
-    <h1>Новости</h1>
-    <a href="{% url "news:create" %}">Добавить статью</a>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Раздел</th>
-              <th scope="col">Статья</th>
-              <th scope="col">Создано</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-        <tbody>
-            {% for news in tidings %}
-                <tr>
-                    <td>{{ news.id }}</td>
-                    <td>{{ news.section }}</td>
-                    <td>{{ news }}</td>
-                    <td>{{ news.created_at|date:"d.m.Y H:i:s" }}</td>
-                    <td><a href="{{ news.get_absolute_url }}">Подробнее</a></td>
-
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-    
+    <div class="container">
+        <h1>Новости</h1>
+        <a href="{% url "news:create" %}">Добавить статью</a>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for news in news %}
+          <div class="col">
+            <div class="card h-100 news">
+              <div class="card-body">
+                 <span class = "material-symbols-outlined"> feed </span>
+                 <div class="card-header">
+                    <small class="text-muted">{{ news.section }}</small>
+                 </div>
+                 <div class="card-header">
+                    <small class="text-muted">{{ news.created_at }}</small>
+                 </div>
+                <h5 class="card-title">
+                    {{ news.header }}
+                </h5>
+                <div class="card-footer">
+                    <a class="btn" href="" role="button">Подробнее</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% bootstrap_pagination news %}
 {% endblock content %}

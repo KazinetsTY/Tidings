@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<div class="sidebar">
+    <a href="{% url "index" %}" class="logo">
+        <img src="{% static "logo.png" %}" alt="logo">
+    </a>
+    <ul class="menu">
+        <li class="menu__item">
+            <a class="menu__link {% if app_name == 'news' %}selected{% endif %}" href="{% url "news:list" %}">
+            <span class="material-symbols-outlined">
+                newspaper
+            </span>
+            <span> Новости </span>
+            </a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link {% if app_name == 'weather' %}selected{% endif %}" href="{% url "weather:list" %}">
+            <span class="material-symbols-outlined">
+                sunny
+            </span>
+            <span> Погода </span>
+            </a>
+        </li>
+    </ul>
+</div>

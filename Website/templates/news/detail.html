@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Просмотр статьи{% endblock %}
+{% block sidebar %}
+    {% include 'sidebar.html' with app_name='news' %}
+{% endblock %}
+{% block content %}
+    <h1>Просмотр статьи</h1>
+    <p>{{ news.header }}</p>
+    <p>{{ news.article }}</p>
+    <p>Опубликовано: {{ news.created_at }}</p>
+{% endblock content%}

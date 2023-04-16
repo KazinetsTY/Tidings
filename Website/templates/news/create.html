@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
 {% block title %}Создание статьи{% endblock %}
+{% block sidebar %}
+    {% include 'sidebar.html' with app_name='news' %}
+{% endblock %}
 {% block content %}
     <h1>Создание статьи</h1>
     <form method="post">

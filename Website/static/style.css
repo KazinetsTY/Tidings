@@ -50,3 +50,100 @@ body {
 .menu__link span:last-child {
     line-height: 24px;
 }
+
+.content {
+    padding: 32px 32px 32px calc(280px + 32px);
+}
+
+.content__wrapper {
+    background-color: white;
+    padding: 24px;
+    min-height: calc(100vh - 32px);
+    border-radius: 6px;
+}
+
+.news {
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.03), 0 0 2px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.12)!important;
+}
+
+.news .card-title {
+    display: flex;
+    align-items: center;
+}
+
+.news .card-title span:first-child {
+    color: #1da750;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #caf1d8;
+}
+
+.news .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news .btn {
+    background: #deb87b;
+    border: 1px solid #deb87b;
+    color: white;
+}
+
+.news .btn:first-child {
+    margin-right: 8px;
+}
+
+.news .btn:hover {
+    background: #16a34a;
+    color: #ffffff;
+    border-color: #16a34a;
+}
+
+.news .btn {
+    background: #22c55e;
+    border: 1px solid #22c55e;
+    border-radius: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.menu__link.selected {
+    color: blue;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+.news {
+    margin-bottom: 24px;
+}
+
+.page-item:not(:last-child) {
+    margin-right: 8px;
+}
+
+.page-item:first-child .page-link {
+    border-radius: 50%;
+}
+
+.page-item:last-child .page-link {
+    border-radius: 50%;
+}
+
+.page-link {
+    border-radius: 50%;
+}
+
+.page-item.active .page-link {
+    background-color: #5382c7;
+}
+
+@media (max-width: 1250px) {
+    .news .btn span:first-child {
+        display: none;
+    }
+}

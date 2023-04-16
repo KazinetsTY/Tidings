@@ -1,12 +1,18 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from news import models
 from news import forms
+from news import consts as news_consts
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    qs = models.News.objects.order_by("-created_at").all()
-    return render(request, "news/index.html", {"tidings": qs})
+    news_qs = models.News.objects.all()
+    paginator = Paginator(news_qs, news_consts.PAGE_SIZE)
+    page_number = request.GET.get("page") or 1
+    page_news = paginator.get_page(page_number)
+    context = {"news": page_news}
+    return render(request, "news/index.html", context=context)
 
 
 def news_create(request):
@@ -18,3 +24,8 @@ def news_create(request):
     else:
         form = forms.NewsForm()
     return render(request, "news/create.html", context={"form": form})
+
+
+def news_detail(request):
+    context = {"course": models.News.objects.get(id=id)}
+    return render(request, "courses/detail.html", context=context)
